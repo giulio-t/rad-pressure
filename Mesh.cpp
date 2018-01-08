@@ -8,6 +8,7 @@
 #include <fstream>
 #include <iomanip>
 #include <limits>
+#include <numeric>
 #include <Mesh.h>
 
 #define EPS 1e-9
@@ -306,14 +307,21 @@ std::array<double, 3> Mesh::computeSurfRad(double reso){
 			}
 		}
 	}
-	// sum all df
 	std::array<double, 3> F = {0,0,0};
+	/*
+	// sum all df
+	
 	for (int i = 0; i < n_px; i++){
 		//std::cout << fx[i]<<" ";
 		F[0] = F[0] + fx[i];
 		F[1] = F[1] + fy[i];
 		F[2] = F[2] + fz[i];
 	} 
+	*/
+
+    F[0] = std::accumulate(fx.begin(), fx.end(), 0.0);
+    F[1] = std::accumulate(fy.begin(), fy.end(), 0.0);
+    F[2] = std::accumulate(fz.begin(), fz.end(), 0.0);
 	//std::cout<<"n_px" << n_px <<"    ";
 	F[0] = F[0]*pow(res,2);
 	F[1] = F[1]*pow(res,2);
