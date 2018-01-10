@@ -26,6 +26,7 @@ int main(int argc, char** argv)
     std::array<double, 3> F = mesh.computeSurfRad(res);
     printArray(F);
     mesh.dumpZVal("zvals.txt");
+    mesh.dumpF("dF");
     return 0;
     
 }

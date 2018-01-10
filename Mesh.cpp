@@ -403,7 +403,37 @@ void Mesh::computeFaceNorm(){ //WARNING compute the normal based on the prjocted
   	}
   myfile.close();
   };
-    void Mesh::dumpF(std::string fname){};
+    void Mesh::dumpF(std::string fname){
+	std::ofstream myfile;
+	std::string fname_current= fname + "x.txt";
+	myfile.open(fname_current);
+	for (int i = 0; i < n_x; i++){
+	  	for (int j = 0; j < n_y; j++){
+	  		myfile <<std::setprecision(6) << fx[j*n_x+i] << " ";
+	  	}
+	  	myfile << "\n";
+	}
+	myfile.close();
+ 	fname_current= fname + "y.txt";
+	  myfile.open(fname_current);
+	  for (int i = 0; i < n_x; i++){
+	  	for (int j = 0; j < n_y; j++){
+	  	myfile <<std::setprecision(6) << fy[j*n_x+i] << " ";
+	  	}
+	  	myfile << "\n";
+	  	}
+	myfile.close();
+	fname_current= fname + "z.txt";
+	myfile.open(fname_current);
+	for (int i = 0; i < n_x; i++){
+	  	for (int j = 0; j < n_y; j++){
+	  		myfile <<std::setprecision(6) << fz[j*n_x+i] << " ";
+	  	}
+	  	myfile << "\n";
+	 }
+	myfile.close();
+  
+    };
 
 
 
